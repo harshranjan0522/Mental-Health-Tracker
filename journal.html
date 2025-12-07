@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg">
+
+<!-- DARK MODE TOGGLE -->
+
+<div class="header">
+    <h2>📘 My Journal</h2>
+</div>
+
+<div class="content">
+
+    <div class="glass-card">
+        <textarea id="entry" placeholder="Write your thoughts..." class="textarea"></textarea>
+        <button class="btn" onclick="saveJournal()">Save Entry</button>
+        <button class="btn" onclick="resetJournal()">🗑 Reset Journal</button>
+
+    </div>
+
+    <div class="glass-card">
+        <h3>Previous Entries</h3>
+        <ul id="journalList" class="list"></ul>
+    </div>
+
+    <button class="back-btn" onclick="window.location='dashboard.html'">⬅ Back</button>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup"></div>
+
+<script src="app.js"></script>
+<script>
+    window.onload = function() {
+        restoreTheme();
+        loadJournal();
+        restoreDarkMode();
+    };
+</script>
+</body>
+</html>

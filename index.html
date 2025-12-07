@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health App - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-bg">
+
+<!-- DARK MODE TOGGLE -->
+<div class="dark-toggle">
+    <input type="checkbox" id="darkSwitch" onclick="toggleDarkMode()">
+    <label for="darkSwitch"></label>
+</div>
+
+<div class="glass-card">
+    <h2 class="title">🌿 Mental Health Support</h2>
+
+    <div class="input-group">
+        <input type="password" id="pin" placeholder="Enter your PIN">
+    </div>
+
+    <button class="btn" onclick="login()">Login</button>
+        <p class="forgot-link" onclick="showForgot()">🔐 Forgot PIN?</p>
+
+<div id="forgotBox" class="forgot-card">
+
+    <p class="forgot-title">🔑 Verify Your Identity</p>
+    <p id="secQuestion" class="forgot-question"></p>
+
+    <input 
+        type="text" 
+        id="secAnswer" 
+        class="input-field"
+        placeholder="Enter your answer">
+
+    <button class="btn small-btn" onclick="verifyAnswer()">Verify</button>
+
+    <div id="resetBox" class="reset-box">
+        <input 
+            type="password" 
+            id="newPinReset" 
+            class="input-field"
+            placeholder="Enter New PIN">
+
+        <button class="btn" onclick="resetPin()">Reset PIN</button>
+    </div>
+
+</div>
+
+
+
+    <p class="footer-text">Your data stays offline & secure ❤️</p>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">Saved Successfully!</div>
+<script>
+    window.onload = function() {
+        restoreTheme();
+    };
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

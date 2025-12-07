@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mood Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg">
+
+<!-- DARK MODE TOGGLE -->
+
+<div class="header">
+    <h2>🌈 Mood Tracker</h2>
+</div>
+
+<div class="content">
+
+    <div class="glass-card">
+        <h3>Add Today’s Mood</h3>
+
+        <select id="moodSelect" class="input-field">
+            <option>Happy</option>
+            <option>Neutral</option>
+            <option>Sad</option>
+            <option>Angry</option>
+            <option>Anxious</option>
+        </select>
+
+        <input type="number" id="level" class="input-field" placeholder="Mood Level (1-10)">
+
+        <button class="btn" onclick="addMood()">Save Mood</button>
+        <button class="btn" onclick="resetMood()">🗑 Reset Mood</button>
+
+    </div>
+
+    <div class="glass-card">
+        <h3>Your Mood History</h3>
+        <ul id="moodList" class="list"></ul>
+    </div>
+
+    <button class="back-btn" onclick="window.location='dashboard.html'">⬅ Back</button>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup"></div>
+
+<script src="app.js"></script>
+<script>
+    window.onload = function() {
+        loadMoods();
+        restoreTheme();
+    };
+</script>
+</body>
+</html>

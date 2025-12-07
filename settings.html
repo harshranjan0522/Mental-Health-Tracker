@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg">
+
+
+
+<h2 class="dash-title">⚙️ Settings</h2>
+
+<div class="settings-container">
+
+    <!-- Change PIN -->
+    <div class="glass-card">
+        <h3>🔐 Change PIN</h3>
+        <input type="password" id="newPin" placeholder="Enter new PIN">
+        <button class="btn" onclick="registerPin()">Update PIN</button>
+
+    </div>
+
+    <!-- Theme info -->
+        <div class="glass-card">
+    <h3>🎨 Theme</h3>
+    <p>Choose your preferred theme:</p>
+    <button class="btn" onclick="toggleThemeFromSettings()">
+        Toggle Light / Dark Mode
+    </button>
+</div>
+
+
+    <!-- App Info -->
+    <div class="glass-card">
+        <h3>ℹ️ App Information</h3>
+        <p>Mental Health Support App<br>All data is stored offline securely.</p>
+    </div>
+
+    <!-- Logout -->
+    <button class="btn logout-btn" onclick="window.location='dashboard.html'">Home</button>
+    <button class="btn logout-btn" onclick="logout()">Logout</button>
+    
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup"></div>
+
+<script src="app.js"></script>
+
+<script>
+    window.onload = function() {
+        restoreTheme();
+    };
+
+    function updatePin() {
+        const pin = document.getElementById("newPin").value;
+
+        if (!pin) return showPopup("Enter PIN!");
+
+        fetch(`${API_URL}/register`, {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({ pin })
+        })
+        .then(r=>r.json())
+        .then(d=>{
+            if (d.success) showPopup("PIN Updated Successfully!");
+            else showPopup("Error updating PIN");
+        });
+    }
+</script>
+
+</body>
+</html>

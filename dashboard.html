@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg">
+<div class="top-nav">
+    <span class="nav-logo">🌿 EMO-DOCTOR</span>
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="mood.html">Mood</a>
+        <a href="journal.html">Journal</a>
+        <a href="settings.html">Settings</a>
+        <button class="nav-logout" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- DARK MODE -->
+
+
+<h2 class="dash-title">✨ Your Wellness Dashboard</h2>
+
+<div class="dashboard-grid">
+
+    <!-- Average Mood Ring -->
+    <div class="ring-card">
+        <div class="progress-ring">
+            <svg>
+                <circle class="bg" cx="60" cy="60" r="50"></circle>
+                <circle class="progress" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="ring-text" id="avgMoodVal">0%</div>
+        </div>
+        <p class="ring-label">Average Mood Score</p>
+    </div>
+
+    <!-- Total Journals -->
+    <div class="dash-card">
+        <h3>📘 Journal Entries</h3>
+        <p id="journalCount" class="big-stat">0</p>
+    </div>
+
+    <!-- Most Frequent Mood -->
+    <div class="dash-card">
+        <h3>🌈 Frequent Mood</h3>
+        <p id="freqMood" class="big-stat">-</p>
+    </div>
+
+    <!-- Latest Mood -->
+    <div class="dash-card">
+        <h3>🕒 Latest Mood</h3>
+        <p id="latestMood" class="big-stat">-</p>
+    </div>
+
+    <!-- Weekly Chart -->
+    <div class="dash-card wide-card">
+        <h3>📅 Weekly Mood Trend</h3>
+        <div id="weeklyChart" class="weekly-chart"></div>
+    </div>
+
+    <!-- Suggestion -->
+    <div class="dash-card">
+        <h3>💡 Today’s Suggestion</h3>
+        <p id="suggestionText">Loading...</p>
+    </div>
+<div id="emergencyBox" class="dash-card" style="display:none; border:2px solid red;">
+    <h3>🚨 Emergency Help</h3>
+    <p>You seem to be in emotional distress.</p>
+    <button class="btn" onclick="callEmergency()">📞 Call Emergency</button>
+</div>
+
+</div>
+
+<button class="back-btn" onclick="window.location='mood.html'">🌈 Mood</button>
+<button class="back-btn" onclick="window.location='journal.html'">📘 Journal</button>
+<button class="back-btn" onclick="window.location='index.html'">⬅ Back</button>
+<button class="back-btn" onclick="window.location='settings.html'">⚙ Settings</button>
+
+
+<div id="popup" class="popup"></div>
+
+<script src="app.js"></script>
+
+<script>
+    window.onload = function () {
+        restoreTheme();   // ✅ NEW THEME SYSTEM (FIX)
+        requireAuth();    // ✅ LOGIN CHECK
+        loadDashboard();  // ✅ LOAD DATA
+        checkCrisisStatus();
+    };
+</script>
+
+
+</body>
+</html>
